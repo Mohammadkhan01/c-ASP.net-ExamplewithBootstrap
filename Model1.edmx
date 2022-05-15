@@ -1,0 +1,749 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="aaa95_anjuman_testModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'aaa95_anjuman_test.dbo.Admin_Score_for_approval' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Admin_Score_for_approval">
+          <Property Name="Admin_Id" Type="int" />
+          <Property Name="Candiate_Id" Type="int" />
+          <Property Name="Score" Type="int" />
+          <Property Name="Year" Type="datetime" />
+          <Property Name="date_of_Score" Type="datetime" />
+        </EntityType>-->
+        <EntityType Name="Announcement">
+          <Key>
+            <PropertyRef Name="AnnouncementId" />
+          </Key>
+          <Property Name="AnnouncementId" Type="int" Nullable="false" />
+          <Property Name="SecurityCodeId" Type="int" Nullable="false" />
+          <Property Name="AnnouncementSub" Type="varchar" MaxLength="50" />
+          <Property Name="Announcement" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="dateofAnnouncement" Type="datetime" Nullable="false" />
+          <Property Name="announcedBy" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'aaa95_anjuman_test.dbo.Bank_Account' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Bank_Account">
+          <Key>
+            <PropertyRef Name="Bank_Id" />
+            <PropertyRef Name="Bank_Account_No" />
+            <PropertyRef Name="BSB_No" />
+            <PropertyRef Name="Account_No" />
+            <PropertyRef Name="Bank_Name" />
+            <PropertyRef Name="Bank_Type" />
+            <PropertyRef Name="Balace" />
+          </Key>
+          <Property Name="Bank_Id" Type="int" Nullable="false" />
+          <Property Name="Account_Holder_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Bank_Account_No" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BSB_No" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Account_No" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Bank_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Bank_Type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Balace" Type="int" Nullable="false" />
+          <Property Name="Remark" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="distribution">
+          <Key>
+            <PropertyRef Name="Distribution_Id" />
+          </Key>
+          <Property Name="Distribution_Id" Type="int" Nullable="false" />
+          <Property Name="Fund_Id" Type="int" Nullable="false" />
+          <Property Name="amount" Type="int" Nullable="false" />
+          <Property Name="date_time" Type="datetime" Nullable="false" />
+          <Property Name="distribute_by" Type="int" Nullable="false" />
+          <Property Name="distribute_purpose" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="candidate_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fund">
+          <Key>
+            <PropertyRef Name="Fund_Id" />
+          </Key>
+          <Property Name="Fund_Id" Type="int" Nullable="false" />
+          <Property Name="Fund_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fund_purpose" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Creation_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fund_Contribution">
+          <Key>
+            <PropertyRef Name="Fund_Contribution_Id" />
+          </Key>
+          <Property Name="Fund_Contribution_Id" Type="int" Nullable="false" />
+          <Property Name="Fund_Id" Type="int" />
+          <Property Name="Contributor_Id" Type="int" />
+          <Property Name="amount" Type="int" />
+          <Property Name="dateandtime" Type="datetime" />
+          <Property Name="bank_account_Id" Type="varchar" MaxLength="50" />
+          <Property Name="Proof_of_Contribution" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Fund_distribution">
+          <Key>
+            <PropertyRef Name="Fund_Distribution_Id" />
+          </Key>
+          <Property Name="Fund_Distribution_Id" Type="int" Nullable="false" />
+          <Property Name="Fund_Id" Type="int" Nullable="false" />
+          <Property Name="amount" Type="int" Nullable="false" />
+          <Property Name="candidate_application_id" Type="int" Nullable="false" />
+          <Property Name="money_transfer_method" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="distribute_by" Type="int" Nullable="false" />
+          <Property Name="distribution_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="UserTypeId" Type="int" Nullable="false" />
+          <Property Name="SecurityCodeId" Type="int" Nullable="false" />
+          <Property Name="OldPhoto" Type="varchar" MaxLength="100" />
+          <Property Name="NewPhoto" Type="varchar" MaxLength="100" />
+          <Property Name="CurrentAddress" Type="varchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ScholarshipCandidateTable">
+          <Key>
+            <PropertyRef Name="CandidateId" />
+          </Key>
+          <Property Name="CandidateId" Type="int" Nullable="false" />
+          <Property Name="CandidateName" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="FatherName" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="MotherName" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="DateOfBirth" Type="date" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="picture" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AnjumanStudentID" Type="int" Nullable="false" />
+          <Property Name="FinalExamResultClass8" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="FinancialConditionOfFamily" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="SourceOfFamilyIncome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="MonthlyFamilyIncome" Type="int" Nullable="false" />
+          <Property Name="NumberOfDependence" Type="int" Nullable="false" />
+          <Property Name="ContactPhoneNumber" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="ContactEmailAddress" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="DescribeAboutYourself" Type="text" Nullable="false" />
+          <Property Name="ConnectedWithOtherAlumni" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NameOfAlumni" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TeacherReference1" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TeacherPhoneNumRef1" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="TeacherReference2" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="TeacherPhoneNumRef2" Type="varchar" MaxLength="13" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SecurityCodeCD">
+          <Key>
+            <PropertyRef Name="SecurityCodeId" />
+          </Key>
+          <Property Name="SecurityCodeId" Type="int" Nullable="false" />
+          <Property Name="SecurityCodeDesc" Type="varchar" MaxLength="50" />
+          <Property Name="VerificationFlag" Type="binary" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" />
+          <Property Name="avator" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+error 6004: The table 'aaa95_anjuman_test.dbo.Admin_Score_for_approval' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_Admin_Score_for_approval_Member" />-->
+        <Association Name="FK_Fund_Contribution_Fund">
+          <End Role="Fund" Type="Self.Fund" Multiplicity="0..1" />
+          <End Role="Fund_Contribution" Type="Self.Fund_Contribution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fund">
+              <PropertyRef Name="Fund_Id" />
+            </Principal>
+            <Dependent Role="Fund_Contribution">
+              <PropertyRef Name="Fund_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fund_Contribution_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Fund_Contribution" Type="Self.Fund_Contribution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Fund_Contribution">
+              <PropertyRef Name="Contributor_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fund_distribution_Fund">
+          <End Role="Fund" Type="Self.Fund" Multiplicity="1" />
+          <End Role="Fund_distribution" Type="Self.Fund_distribution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fund">
+              <PropertyRef Name="Fund_Id" />
+            </Principal>
+            <Dependent Role="Fund_distribution">
+              <PropertyRef Name="Fund_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fund_distribution_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="Fund_distribution" Type="Self.Fund_distribution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Fund_distribution">
+              <PropertyRef Name="distribute_by" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fund_distribution_Member1">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="Fund_distribution" Type="Self.Fund_distribution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Fund_distribution">
+              <PropertyRef Name="distribute_by" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fund_distribution_ScholarshipCandidateTable">
+          <End Role="ScholarshipCandidateTable" Type="Self.ScholarshipCandidateTable" Multiplicity="1" />
+          <End Role="Fund_distribution" Type="Self.Fund_distribution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScholarshipCandidateTable">
+              <PropertyRef Name="CandidateId" />
+            </Principal>
+            <Dependent Role="Fund_distribution">
+              <PropertyRef Name="candidate_application_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="aaa95_anjuman_testModelStoreContainer">
+          <EntitySet Name="Announcement" EntityType="Self.Announcement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="distribution" EntityType="Self.distribution" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fund" EntityType="Self.Fund" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fund_Contribution" EntityType="Self.Fund_Contribution" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fund_distribution" EntityType="Self.Fund_distribution" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ScholarshipCandidateTable" EntityType="Self.ScholarshipCandidateTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SecurityCodeCD" EntityType="Self.SecurityCodeCD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bank_Account" EntityType="Self.Bank_Account" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Bank_Account].[Bank_Id] AS [Bank_Id], 
+    [Bank_Account].[Account_Holder_Name] AS [Account_Holder_Name], 
+    [Bank_Account].[Bank_Account_No] AS [Bank_Account_No], 
+    [Bank_Account].[BSB_No] AS [BSB_No], 
+    [Bank_Account].[Account_No] AS [Account_No], 
+    [Bank_Account].[Bank_Name] AS [Bank_Name], 
+    [Bank_Account].[Bank_Type] AS [Bank_Type], 
+    [Bank_Account].[Balace] AS [Balace], 
+    [Bank_Account].[Remark] AS [Remark]
+    FROM [dbo].[Bank_Account] AS [Bank_Account]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Fund_Contribution_Fund" Association="Self.FK_Fund_Contribution_Fund">
+            <End Role="Fund" EntitySet="Fund" />
+            <End Role="Fund_Contribution" EntitySet="Fund_Contribution" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fund_Contribution_Member" Association="Self.FK_Fund_Contribution_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Fund_Contribution" EntitySet="Fund_Contribution" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fund_distribution_Fund" Association="Self.FK_Fund_distribution_Fund">
+            <End Role="Fund" EntitySet="Fund" />
+            <End Role="Fund_distribution" EntitySet="Fund_distribution" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fund_distribution_Member" Association="Self.FK_Fund_distribution_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Fund_distribution" EntitySet="Fund_distribution" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fund_distribution_Member1" Association="Self.FK_Fund_distribution_Member1">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Fund_distribution" EntitySet="Fund_distribution" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fund_distribution_ScholarshipCandidateTable" Association="Self.FK_Fund_distribution_ScholarshipCandidateTable">
+            <End Role="ScholarshipCandidateTable" EntitySet="ScholarshipCandidateTable" />
+            <End Role="Fund_distribution" EntitySet="Fund_distribution" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="aaa95_anjuman_testModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Announcement">
+          <Key>
+            <PropertyRef Name="AnnouncementId" />
+          </Key>
+          <Property Name="AnnouncementId" Type="Int32" Nullable="false" />
+          <Property Name="SecurityCodeId" Type="Int32" Nullable="false" />
+          <Property Name="AnnouncementSub" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Announcement1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dateofAnnouncement" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="announcedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="distribution">
+          <Key>
+            <PropertyRef Name="Distribution_Id" />
+          </Key>
+          <Property Name="Distribution_Id" Type="Int32" Nullable="false" />
+          <Property Name="Fund_Id" Type="Int32" Nullable="false" />
+          <Property Name="amount" Type="Int32" Nullable="false" />
+          <Property Name="date_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="distribute_by" Type="Int32" Nullable="false" />
+          <Property Name="distribute_purpose" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="candidate_Id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fund">
+          <Key>
+            <PropertyRef Name="Fund_Id" />
+          </Key>
+          <Property Name="Fund_Id" Type="Int32" Nullable="false" />
+          <Property Name="Fund_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fund_purpose" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Creation_date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Fund_Contribution" Relationship="Self.FK_Fund_Contribution_Fund" FromRole="Fund" ToRole="Fund_Contribution" />
+          <NavigationProperty Name="Fund_distribution" Relationship="Self.FK_Fund_distribution_Fund" FromRole="Fund" ToRole="Fund_distribution" />
+        </EntityType>
+        <EntityType Name="Fund_Contribution">
+          <Key>
+            <PropertyRef Name="Fund_Contribution_Id" />
+          </Key>
+          <Property Name="Fund_Contribution_Id" Type="Int32" Nullable="false" />
+          <Property Name="Fund_Id" Type="Int32" />
+          <Property Name="Contributor_Id" Type="Int32" />
+          <Property Name="amount" Type="Int32" />
+          <Property Name="dateandtime" Type="DateTime" Precision="3" />
+          <Property Name="bank_account_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Proof_of_Contribution" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Fund" Relationship="Self.FK_Fund_Contribution_Fund" FromRole="Fund_Contribution" ToRole="Fund" />
+          <NavigationProperty Name="Member" Relationship="Self.FK_Fund_Contribution_Member" FromRole="Fund_Contribution" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="Fund_distribution">
+          <Key>
+            <PropertyRef Name="Fund_Distribution_Id" />
+          </Key>
+          <Property Name="Fund_Distribution_Id" Type="Int32" Nullable="false" />
+          <Property Name="Fund_Id" Type="Int32" Nullable="false" />
+          <Property Name="amount" Type="Int32" Nullable="false" />
+          <Property Name="candidate_application_id" Type="Int32" Nullable="false" />
+          <Property Name="money_transfer_method" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="distribute_by" Type="Int32" Nullable="false" />
+          <Property Name="distribution_date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Fund" Relationship="Self.FK_Fund_distribution_Fund" FromRole="Fund_distribution" ToRole="Fund" />
+          <NavigationProperty Name="Member" Relationship="Self.FK_Fund_distribution_Member" FromRole="Fund_distribution" ToRole="Member" />
+          <NavigationProperty Name="Member1" Relationship="Self.FK_Fund_distribution_Member1" FromRole="Fund_distribution" ToRole="Member" />
+          <NavigationProperty Name="ScholarshipCandidateTable" Relationship="Self.FK_Fund_distribution_ScholarshipCandidateTable" FromRole="Fund_distribution" ToRole="ScholarshipCandidateTable" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+          <Property Name="SecurityCodeId" Type="Int32" Nullable="false" />
+          <Property Name="OldPhoto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NewPhoto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Fund_Contribution" Relationship="Self.FK_Fund_Contribution_Member" FromRole="Member" ToRole="Fund_Contribution" />
+          <NavigationProperty Name="Fund_distribution" Relationship="Self.FK_Fund_distribution_Member" FromRole="Member" ToRole="Fund_distribution" />
+          <NavigationProperty Name="Fund_distribution1" Relationship="Self.FK_Fund_distribution_Member1" FromRole="Member" ToRole="Fund_distribution" />
+        </EntityType>
+        <EntityType Name="ScholarshipCandidateTable">
+          <Key>
+            <PropertyRef Name="CandidateId" />
+          </Key>
+          <Property Name="CandidateId" Type="Int32" Nullable="false" />
+          <Property Name="CandidateName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FatherName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MotherName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="picture" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AnjumanStudentID" Type="Int32" Nullable="false" />
+          <Property Name="FinalExamResultClass8" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FinancialConditionOfFamily" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SourceOfFamilyIncome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MonthlyFamilyIncome" Type="Int32" Nullable="false" />
+          <Property Name="NumberOfDependence" Type="Int32" Nullable="false" />
+          <Property Name="ContactPhoneNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactEmailAddress" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DescribeAboutYourself" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ConnectedWithOtherAlumni" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NameOfAlumni" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TeacherReference1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TeacherPhoneNumRef1" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TeacherReference2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TeacherPhoneNumRef2" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Fund_distribution" Relationship="Self.FK_Fund_distribution_ScholarshipCandidateTable" FromRole="ScholarshipCandidateTable" ToRole="Fund_distribution" />
+        </EntityType>
+        <EntityType Name="SecurityCodeCD">
+          <Key>
+            <PropertyRef Name="SecurityCodeId" />
+          </Key>
+          <Property Name="SecurityCodeId" Type="Int32" Nullable="false" />
+          <Property Name="SecurityCodeDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VerificationFlag" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="avator" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Bank_Account">
+          <Key>
+            <PropertyRef Name="Bank_Id" />
+            <PropertyRef Name="Bank_Account_No" />
+            <PropertyRef Name="BSB_No" />
+            <PropertyRef Name="Account_No" />
+            <PropertyRef Name="Bank_Name" />
+            <PropertyRef Name="Bank_Type" />
+            <PropertyRef Name="Balace" />
+          </Key>
+          <Property Name="Bank_Id" Type="Int32" Nullable="false" />
+          <Property Name="Account_Holder_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Bank_Account_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BSB_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Account_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Bank_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Bank_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Balace" Type="Int32" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Fund_Contribution_Fund">
+          <End Role="Fund" Type="Self.Fund" Multiplicity="0..1" />
+          <End Role="Fund_Contribution" Type="Self.Fund_Contribution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fund">
+              <PropertyRef Name="Fund_Id" />
+            </Principal>
+            <Dependent Role="Fund_Contribution">
+              <PropertyRef Name="Fund_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fund_distribution_Fund">
+          <End Role="Fund" Type="Self.Fund" Multiplicity="1" />
+          <End Role="Fund_distribution" Type="Self.Fund_distribution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fund">
+              <PropertyRef Name="Fund_Id" />
+            </Principal>
+            <Dependent Role="Fund_distribution">
+              <PropertyRef Name="Fund_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fund_Contribution_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Fund_Contribution" Type="Self.Fund_Contribution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Fund_Contribution">
+              <PropertyRef Name="Contributor_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fund_distribution_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="Fund_distribution" Type="Self.Fund_distribution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Fund_distribution">
+              <PropertyRef Name="distribute_by" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fund_distribution_Member1">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="Fund_distribution" Type="Self.Fund_distribution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Fund_distribution">
+              <PropertyRef Name="distribute_by" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fund_distribution_ScholarshipCandidateTable">
+          <End Role="ScholarshipCandidateTable" Type="Self.ScholarshipCandidateTable" Multiplicity="1" />
+          <End Role="Fund_distribution" Type="Self.Fund_distribution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScholarshipCandidateTable">
+              <PropertyRef Name="CandidateId" />
+            </Principal>
+            <Dependent Role="Fund_distribution">
+              <PropertyRef Name="candidate_application_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="aaa95_anjuman_testEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Announcements" EntityType="Self.Announcement" />
+          <EntitySet Name="distributions" EntityType="Self.distribution" />
+          <EntitySet Name="Funds" EntityType="Self.Fund" />
+          <EntitySet Name="Fund_Contribution" EntityType="Self.Fund_Contribution" />
+          <EntitySet Name="Fund_distribution" EntityType="Self.Fund_distribution" />
+          <EntitySet Name="Members" EntityType="Self.Member" />
+          <EntitySet Name="ScholarshipCandidateTables" EntityType="Self.ScholarshipCandidateTable" />
+          <EntitySet Name="SecurityCodeCDs" EntityType="Self.SecurityCodeCD" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <EntitySet Name="Bank_Account" EntityType="Self.Bank_Account" />
+          <AssociationSet Name="FK_Fund_Contribution_Fund" Association="Self.FK_Fund_Contribution_Fund">
+            <End Role="Fund" EntitySet="Funds" />
+            <End Role="Fund_Contribution" EntitySet="Fund_Contribution" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fund_distribution_Fund" Association="Self.FK_Fund_distribution_Fund">
+            <End Role="Fund" EntitySet="Funds" />
+            <End Role="Fund_distribution" EntitySet="Fund_distribution" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fund_Contribution_Member" Association="Self.FK_Fund_Contribution_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Fund_Contribution" EntitySet="Fund_Contribution" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fund_distribution_Member" Association="Self.FK_Fund_distribution_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Fund_distribution" EntitySet="Fund_distribution" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fund_distribution_Member1" Association="Self.FK_Fund_distribution_Member1">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Fund_distribution" EntitySet="Fund_distribution" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fund_distribution_ScholarshipCandidateTable" Association="Self.FK_Fund_distribution_ScholarshipCandidateTable">
+            <End Role="ScholarshipCandidateTable" EntitySet="ScholarshipCandidateTables" />
+            <End Role="Fund_distribution" EntitySet="Fund_distribution" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="aaa95_anjuman_testModelStoreContainer" CdmEntityContainer="aaa95_anjuman_testEntities2">
+          <EntitySetMapping Name="Announcements">
+            <EntityTypeMapping TypeName="aaa95_anjuman_testModel.Announcement">
+              <MappingFragment StoreEntitySet="Announcement">
+                <ScalarProperty Name="AnnouncementId" ColumnName="AnnouncementId" />
+                <ScalarProperty Name="SecurityCodeId" ColumnName="SecurityCodeId" />
+                <ScalarProperty Name="AnnouncementSub" ColumnName="AnnouncementSub" />
+                <ScalarProperty Name="Announcement1" ColumnName="Announcement" />
+                <ScalarProperty Name="dateofAnnouncement" ColumnName="dateofAnnouncement" />
+                <ScalarProperty Name="announcedBy" ColumnName="announcedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="distributions">
+            <EntityTypeMapping TypeName="aaa95_anjuman_testModel.distribution">
+              <MappingFragment StoreEntitySet="distribution">
+                <ScalarProperty Name="Distribution_Id" ColumnName="Distribution_Id" />
+                <ScalarProperty Name="Fund_Id" ColumnName="Fund_Id" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="date_time" ColumnName="date_time" />
+                <ScalarProperty Name="distribute_by" ColumnName="distribute_by" />
+                <ScalarProperty Name="distribute_purpose" ColumnName="distribute_purpose" />
+                <ScalarProperty Name="candidate_Id" ColumnName="candidate_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Funds">
+            <EntityTypeMapping TypeName="aaa95_anjuman_testModel.Fund">
+              <MappingFragment StoreEntitySet="Fund">
+                <ScalarProperty Name="Fund_Id" ColumnName="Fund_Id" />
+                <ScalarProperty Name="Fund_Name" ColumnName="Fund_Name" />
+                <ScalarProperty Name="Fund_purpose" ColumnName="Fund_purpose" />
+                <ScalarProperty Name="Creation_date" ColumnName="Creation_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fund_Contribution">
+            <EntityTypeMapping TypeName="aaa95_anjuman_testModel.Fund_Contribution">
+              <MappingFragment StoreEntitySet="Fund_Contribution">
+                <ScalarProperty Name="Fund_Contribution_Id" ColumnName="Fund_Contribution_Id" />
+                <ScalarProperty Name="Fund_Id" ColumnName="Fund_Id" />
+                <ScalarProperty Name="Contributor_Id" ColumnName="Contributor_Id" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="dateandtime" ColumnName="dateandtime" />
+                <ScalarProperty Name="bank_account_Id" ColumnName="bank_account_Id" />
+                <ScalarProperty Name="Proof_of_Contribution" ColumnName="Proof_of_Contribution" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fund_distribution">
+            <EntityTypeMapping TypeName="aaa95_anjuman_testModel.Fund_distribution">
+              <MappingFragment StoreEntitySet="Fund_distribution">
+                <ScalarProperty Name="Fund_Distribution_Id" ColumnName="Fund_Distribution_Id" />
+                <ScalarProperty Name="Fund_Id" ColumnName="Fund_Id" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="candidate_application_id" ColumnName="candidate_application_id" />
+                <ScalarProperty Name="money_transfer_method" ColumnName="money_transfer_method" />
+                <ScalarProperty Name="distribute_by" ColumnName="distribute_by" />
+                <ScalarProperty Name="distribution_date" ColumnName="distribution_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Members">
+            <EntityTypeMapping TypeName="aaa95_anjuman_testModel.Member">
+              <MappingFragment StoreEntitySet="Member">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="SecurityCodeId" ColumnName="SecurityCodeId" />
+                <ScalarProperty Name="OldPhoto" ColumnName="OldPhoto" />
+                <ScalarProperty Name="NewPhoto" ColumnName="NewPhoto" />
+                <ScalarProperty Name="CurrentAddress" ColumnName="CurrentAddress" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ScholarshipCandidateTables">
+            <EntityTypeMapping TypeName="aaa95_anjuman_testModel.ScholarshipCandidateTable">
+              <MappingFragment StoreEntitySet="ScholarshipCandidateTable">
+                <ScalarProperty Name="CandidateId" ColumnName="CandidateId" />
+                <ScalarProperty Name="CandidateName" ColumnName="CandidateName" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="MotherName" ColumnName="MotherName" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="AnjumanStudentID" ColumnName="AnjumanStudentID" />
+                <ScalarProperty Name="FinalExamResultClass8" ColumnName="FinalExamResultClass8" />
+                <ScalarProperty Name="FinancialConditionOfFamily" ColumnName="FinancialConditionOfFamily" />
+                <ScalarProperty Name="SourceOfFamilyIncome" ColumnName="SourceOfFamilyIncome" />
+                <ScalarProperty Name="MonthlyFamilyIncome" ColumnName="MonthlyFamilyIncome" />
+                <ScalarProperty Name="NumberOfDependence" ColumnName="NumberOfDependence" />
+                <ScalarProperty Name="ContactPhoneNumber" ColumnName="ContactPhoneNumber" />
+                <ScalarProperty Name="ContactEmailAddress" ColumnName="ContactEmailAddress" />
+                <ScalarProperty Name="DescribeAboutYourself" ColumnName="DescribeAboutYourself" />
+                <ScalarProperty Name="ConnectedWithOtherAlumni" ColumnName="ConnectedWithOtherAlumni" />
+                <ScalarProperty Name="NameOfAlumni" ColumnName="NameOfAlumni" />
+                <ScalarProperty Name="TeacherReference1" ColumnName="TeacherReference1" />
+                <ScalarProperty Name="TeacherPhoneNumRef1" ColumnName="TeacherPhoneNumRef1" />
+                <ScalarProperty Name="TeacherReference2" ColumnName="TeacherReference2" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="TeacherPhoneNumRef2" ColumnName="TeacherPhoneNumRef2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SecurityCodeCDs">
+            <EntityTypeMapping TypeName="aaa95_anjuman_testModel.SecurityCodeCD">
+              <MappingFragment StoreEntitySet="SecurityCodeCD">
+                <ScalarProperty Name="SecurityCodeId" ColumnName="SecurityCodeId" />
+                <ScalarProperty Name="SecurityCodeDesc" ColumnName="SecurityCodeDesc" />
+                <ScalarProperty Name="VerificationFlag" ColumnName="VerificationFlag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="aaa95_anjuman_testModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="aaa95_anjuman_testModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="avator" ColumnName="avator" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bank_Account">
+            <EntityTypeMapping TypeName="aaa95_anjuman_testModel.Bank_Account">
+              <MappingFragment StoreEntitySet="Bank_Account">
+                <ScalarProperty Name="Bank_Id" ColumnName="Bank_Id" />
+                <ScalarProperty Name="Account_Holder_Name" ColumnName="Account_Holder_Name" />
+                <ScalarProperty Name="Bank_Account_No" ColumnName="Bank_Account_No" />
+                <ScalarProperty Name="BSB_No" ColumnName="BSB_No" />
+                <ScalarProperty Name="Account_No" ColumnName="Account_No" />
+                <ScalarProperty Name="Bank_Name" ColumnName="Bank_Name" />
+                <ScalarProperty Name="Bank_Type" ColumnName="Bank_Type" />
+                <ScalarProperty Name="Balace" ColumnName="Balace" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
